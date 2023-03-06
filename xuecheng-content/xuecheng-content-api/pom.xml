@@ -4,14 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.xuecheng</groupId>
-        <artifactId>xuecheng-parent</artifactId>
+        <artifactId>xuecheng-content</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../xuecheng-parent</relativePath>
     </parent>
-    <artifactId>xuecheng-base</artifactId>
+    <artifactId>xuecheng-content-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>xuecheng-base</name>
-    <description>xuecheng-base</description>
+    <name>xuecheng-content-api</name>
+    <description>xuecheng-content-api</description>
 
     <properties>
         <java.version>1.8</java.version>

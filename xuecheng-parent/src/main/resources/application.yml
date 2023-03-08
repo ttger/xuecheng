@@ -1,0 +1,38 @@
+# 应用名称
+server:
+  port: 8080
+spring:
+  application:
+    name: xuecheng-parent-service
+
+  datasource:
+    url: jdbc:mysql://182.160.5.25:3306/course?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: 1234
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      #     初始化大小
+      initial-size: 5
+      #      最大活跃数量
+      max-active: 20
+      #      最小数量
+      min-idle: 5
+      #      日志输出、防火墙等
+      filters: log4j2,wall,stat
+      #      数据库类型
+      db-type: mysql
+      #        web-stat-filter 配置
+      web-stat-filter:
+        enabled: true
+      stat-view-servlet:
+        enabled: true
+        login-password: 123
+        login-username: 123
+      #        spring 监控配置
+      #      aop-patterns: spring
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#      mybatis-plus配置
+
+
+

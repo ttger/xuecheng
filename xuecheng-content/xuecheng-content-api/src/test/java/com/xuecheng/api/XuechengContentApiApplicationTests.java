@@ -2,7 +2,7 @@ package com.xuecheng.api;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.xuecheng.model.domain.CourseBaseEntity;
-import com.xuecheng.model.mapper.CourseBaseMapper;
+import com.xuecheng.service.mapper.CourseBaseMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

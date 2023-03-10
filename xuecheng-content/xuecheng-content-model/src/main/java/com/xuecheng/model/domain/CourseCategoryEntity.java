@@ -1,6 +1,10 @@
 package com.xuecheng.model.domain;
 
 import java.io.Serializable;
+import java.util.List;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -10,6 +14,7 @@ import lombok.Data;
  * @date 2023-03-07
  */
 @Data
+@TableName("course_category")
 public class CourseCategoryEntity implements Serializable{
     private static final long serialVersionUID = 1L;
 
@@ -34,5 +39,9 @@ public class CourseCategoryEntity implements Serializable{
     /** 是否叶子 */
     private Integer isLeaf;
 
-
+    /**
+     * 子集
+     */
+    @TableField(exist = false)
+    private List<CourseCategoryEntity> child;
 }

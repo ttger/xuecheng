@@ -1,6 +1,8 @@
 package com.xuecheng.model.domain;
 
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import lombok.Data;
@@ -12,6 +14,7 @@ import lombok.Data;
  * @date 2023-03-07
  */
 @Data
+@TableName("teachplan_work")
 public class TeachplanWorkEntity implements Serializable{
     private static final long serialVersionUID = 1L;
 

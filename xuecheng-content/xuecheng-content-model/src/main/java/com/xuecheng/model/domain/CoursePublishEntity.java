@@ -2,6 +2,8 @@ package com.xuecheng.model.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import lombok.Data;
@@ -13,6 +15,7 @@ import lombok.Data;
  * @date 2023-03-07
  */
 @Data
+@TableName("course_publish")
 public class CoursePublishEntity implements Serializable{
     private static final long serialVersionUID = 1L;
 

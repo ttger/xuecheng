@@ -2,6 +2,8 @@ package com.xuecheng.model.domain;
 
 import java.math.BigDecimal;
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -11,6 +13,7 @@ import lombok.Data;
  * @date 2023-03-07
  */
 @Data
+@TableName("course_market")
 public class CourseMarketEntity implements Serializable{
     private static final long serialVersionUID = 1L;
 

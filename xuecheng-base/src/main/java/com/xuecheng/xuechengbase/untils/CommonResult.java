@@ -27,6 +27,9 @@ public class CommonResult {
     public static CommonResult error(){
         return new CommonResult(Constants.CODE_500,"系统错误",null);
     }
+    public static CommonResult error(String msg){
+        return new CommonResult(Constants.CODE_500,msg,null);
+    }
 
 
 }

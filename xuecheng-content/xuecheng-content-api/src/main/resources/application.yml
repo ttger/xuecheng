@@ -1,74 +1,33 @@
+nacos-addr: 182.160.5.25:8848
+namespace-dev: ad8a2f57-af39-407d-aec5-b5c8679e1c78
+namespace-test: 32e575cc-5dd0-401a-ba60-4546e45f08d3
 # 应用名称
 server:
   servlet:
     context-path: /content
   port: 8080
+
 spring:
   application:
-    name: xuecheng-content-service
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://182.160.5.25:3306/course?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-    username: root
-    password: 1234
-    type: com.alibaba.druid.pool.DruidDataSource
-    druid:
-      #     初始化大小
-      initial-size: 5
-      #      最大活跃数量
-      max-active: 20
-      #      最小数量
-      min-idle: 5
-      #      日志输出、防火墙等
-      filters: log4j2,wall,stat
-      #      数据库类型
-      db-type: mysql
-      #        web-stat-filter 配置
-      web-stat-filter:
-        enabled: true
-      stat-view-servlet:
-        enabled: true
-        login-password: 123
-        login-username: 123
-      #        spring 监控配置
-      #      aop-patterns: spring
-      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
-      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-#      mybatis-plus配置
-
-# swagger2 配置
-swagger:
-  title: 学成在线 系统API在线文档
-  version: v1.0.0
-  description: swagger2在线生成文档
-  basepackage: com.xuecheng.api.controller
-  contact:
-    name: zwh
-    email: zz@163.com
-  enabled: true
-
-#      mybatis-plus配置
-mybatis-plus:
-  #  别名
-  type-aliases-package: com.xuecheng.model.domain
-  #    mapper文件位置
-  mapper-locations: classpath:/mapper/**/*.xml
-  configuration:
-    #    自动映射
-    auto-mapping-behavior: full
-    #   驼峰命名
-    map-underscore-to-camel-case: true
-    #        日志输出
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    #    二级缓存
-    cache-enabled: true
-  #  全局配置
-  global-config:
-    db-config:
-      #      逻辑删除
-      logic-delete-field: deleted
-      logic-delete-value: 1       #  1表示删除
-      logic-not-delete-value: 0   #  0标识未删除
+    name: xuecheng-content
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      server-addr: ${nacos-addr}
+      username: nacos
+      password: nacos
+      config:
+        namespace: ${namespace-${spring.profiles.active}}
+        group: ${spring.application.name}
+      discovery:
+        namespace: ${namespace-${spring.profiles.active}}
+    config:
+      override-none: true
+  config:
+    import:
+      - nacos:${spring.application.name}-${spring.profiles.active}.yml
+      - optional:nacos:swagger-xuecheng.yml?refreshEnabled=true&group=xuecheng
+      - optional:nacos:mybatis-xuecheng.yml?refreshEnabled=true&group=xuecheng

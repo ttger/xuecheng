@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import com.alibaba.druid.util.StringUtils;
 import com.xuecheng.service.service.CourseCategoryService;
-import com.xuecheng.xuechengbase.untils.DataUntils;
+import com.xuecheng.base.utils.DataUntils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

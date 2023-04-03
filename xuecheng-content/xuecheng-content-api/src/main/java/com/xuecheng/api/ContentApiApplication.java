@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 @Slf4j
 @SpringBootApplication
 @MapperScan("com.xuecheng.service.mapper")
-@ComponentScan(basePackages = {"com.xuecheng.model","com.xuecheng.api","com.xuecheng.xuechengbase","com.xuecheng.service"})
+@ComponentScan(basePackages = {"com.xuecheng.model","com.xuecheng.api", "com.xuecheng.base","com.xuecheng.service"})
 public class ContentApiApplication {
 
     public static void main(String[] args) {

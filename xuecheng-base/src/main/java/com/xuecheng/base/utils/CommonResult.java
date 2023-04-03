@@ -1,6 +1,6 @@
-package com.xuecheng.xuechengbase.untils;
+package com.xuecheng.base.utils;
 
-import com.xuecheng.xuechengbase.constants.Constants;
+import com.xuecheng.base.constants.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,7 +25,7 @@ public class CommonResult {
     }
 
     public static CommonResult error(){
-        return new CommonResult(Constants.CODE_500,"系统错误",null);
+        return new CommonResult( Constants.CODE_500,"系统错误",null);
     }
     public static CommonResult error(String msg){
         return new CommonResult(Constants.CODE_500,msg,null);

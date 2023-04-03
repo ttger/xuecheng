@@ -1,12 +1,10 @@
 package com.xuecheng.service.service;
 
-import java.util.List;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xuecheng.model.domain.CourseBaseEntity;
 import com.xuecheng.model.domain.vo.CourseQueryVo;
-import com.xuecheng.xuechengbase.domain.PageParams;
-import com.xuecheng.xuechengbase.domain.PageResult;
-import com.xuecheng.xuechengbase.untils.CommonResult;
+import com.xuecheng.base.domain.PageParams;
+import com.xuecheng.base.utils.CommonResult;
 
 /**
  * 课程基本信息Service接口

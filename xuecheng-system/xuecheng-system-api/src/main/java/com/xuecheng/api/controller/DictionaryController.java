@@ -1,5 +1,6 @@
 package com.xuecheng.api.controller;
 
+import com.xuecheng.base.utils.CommonResult;
 import com.xuecheng.model.domain.DictionaryEntity;
 import com.xuecheng.service.service.DictionaryService;
 import io.swagger.annotations.Api;
@@ -23,8 +24,6 @@ import java.util.List;
 @RequestMapping("/dictionary")
 public class DictionaryController {
 
-    private String prefix = "model/dictionary";
-
     @Autowired
     private DictionaryService dictionaryService;
 
@@ -36,4 +35,9 @@ public class DictionaryController {
         return dictionaryEntityList;
     }
 
+    @ApiOperation("获取字典")
+    @GetMapping("/getById/{id}")
+    public CommonResult getById(String id){
+        return dictionaryService.getDictionary(id);
+    }
 }

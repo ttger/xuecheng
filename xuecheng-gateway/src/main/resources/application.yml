@@ -1,0 +1,60 @@
+#nacos-addr: 182.160.5.25:8848
+nacos-addr: 127.0.0.1:8848
+namespace-dev: ad8a2f57-af39-407d-aec5-b5c8679e1c78
+namespace-test: 32e575cc-5dd0-401a-ba60-4546e45f08d3
+# 应用名称
+server:
+  port: 80
+
+spring:
+  application:
+    name: xuecheng-gateway
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: ${nacos-addr}
+#      username: nacos
+#      password: nacos
+      config:
+        namespace: ${namespace-${spring.profiles.active}}
+        group: xuecheng
+      discovery:
+        namespace: ${namespace-${spring.profiles.active}}
+        ephemeral: false
+    #    config:
+#      override-none: true
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: xuecheng-content  #路由id， 唯一即可
+          uri: lb://xuecheng-content   #路由目标地址， lb是负载均衡，后面是nacos上注册的服务名
+          predicates:
+            - Path=/content/**    #匹配路径，以content开头的会路由到目标地址
+
+        - id: xuecheng-system  #路由id， 唯一即可
+          uri: lb://xuecheng-system   #路由目标地址， lb是负载均衡，后面是nacos上注册的服务名
+#          uri: http://localhost:8090   #路由目标地址， lb是负载均衡，后面是nacos上注册的服务名
+          predicates:
+            - Path=/system/**    #匹配路径，以content开头的会路由到目标地址
+
+
+  config:
+    import:
+      - nacos:xuecheng-content-dev.yml
+      - optional:nacos:gateway-xuecheng.yml?refreshEnabled=true
+#actuator 健康监控
+#management:
+#  endpoints:
+#    enabled-by-default: true #默认是true
+#    web:
+#      exposure:
+#        include: "*"  #开启全部监控端点
+#      base-path: /actuator #自定义监控根路径（/actuator 改为/,此配置只用于更改/actuator这个path节点 ）
+#  endpoint:
+#    health:
+#      show-details: always #health端点显示具体信息
+#    info:
+#      enabled: true
